@@ -1,4 +1,4 @@
-package why.store.repo;
+package why.store.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import why.store.entity.Category;

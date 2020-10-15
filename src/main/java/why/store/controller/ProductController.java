@@ -6,15 +6,18 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import why.store.entity.Category;
 import why.store.entity.Product;
-import why.store.repo.CategoryRepo;
-import why.store.repo.ProductRepo;
+import why.store.repository.CategoryRepo;
+import why.store.repository.ProductRepo;
+
 import java.util.List;
 
 @RestController
 @RequestMapping("/product")
 public class ProductController {
-    @Autowired ProductRepo productRepo;
-    @Autowired CategoryRepo categoryRepo;
+    @Autowired
+    ProductRepo productRepo;
+    @Autowired
+    CategoryRepo categoryRepo;
 
     @GetMapping("/")
     public List<Product> getProducts() {

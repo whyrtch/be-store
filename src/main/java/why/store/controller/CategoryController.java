@@ -5,7 +5,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import why.store.entity.Category;
-import why.store.repo.CategoryRepo;
+import why.store.repository.CategoryRepo;
+
 import java.util.List;
 
 @RestController
