@@ -19,17 +19,17 @@ public class ProductController {
     @Autowired
     CategoryRepo categoryRepo;
 
-    @GetMapping("/")
+    @GetMapping()
     public List<Product> getProducts() {
         return productRepo.findAll();
     }
 
-    @PostMapping("/")
+    @PostMapping()
     public Product addProduct(@Validated @RequestBody Product request){
         return productRepo.save(request);
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/update/{id}")
     public ResponseEntity<Product> updateProduct(@PathVariable(value = "id") Long id,
                                                  @Validated @RequestBody Product request){
         if (productRepo.getOne(id).getName() != null) {
@@ -40,7 +40,7 @@ public class ProductController {
         }
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/delete/{id}")
     public String deleteProduct(@PathVariable(value = "id") Long id){
         Product product = productRepo.getOne(id);
        if (product == null) return "product with id " + id + "not found";
@@ -48,19 +48,19 @@ public class ProductController {
        return "product with id " + id + " removed successfully";
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/find/{id}")
     public ResponseEntity<Product> getProductById(@PathVariable(value = "id") Long id) {
         Product product = productRepo.getOne(id);
         if (product == null) return ResponseEntity.notFound().build();
         return ResponseEntity.ok().body(product);
     }
 
-    @GetMapping("/findby/name")
+    @GetMapping("/find/name")
     public List<Product> sortProduct(@RequestParam(value = "name") String name){
         return productRepo.findByName(name);
     }
 
-    @GetMapping("/findby/category")
+    @GetMapping("/find/category")
     public List<Product> sortProduct(@RequestParam(value = "category") Long categoryId){
         Category category = categoryRepo.getOne(categoryId);
         return productRepo.findByCategory(category);
