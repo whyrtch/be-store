@@ -18,7 +18,7 @@ import java.util.Date;
 @DynamicInsert
 public class BaseEntity implements Serializable {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     Long id ;
 
     @Column(nullable = false, updatable = false)
